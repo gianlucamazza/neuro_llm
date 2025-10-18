@@ -9,8 +9,6 @@
 
 Repository educativo che dimostra **IBM Logical Neural Networks (LNN)**, un framework neuro-simbolico che fonde reti neurali e logica simbolica, ispirandosi a processi cognitivi umani.
 
-> **📝 Nota**: Prima di pubblicare su GitHub, sostituisci `YOUR_USERNAME` nei badge sopra con il tuo username GitHub.
-
 ## 📚 Documentazione
 
 | Sezione | Descrizione |
@@ -24,61 +22,7 @@ Repository educativo che dimostra **IBM Logical Neural Networks (LNN)**, un fram
 | [📖 Glossario](docs/glossary.md) | Termini e concetti chiave |
 | [🔧 Troubleshooting](docs/troubleshooting.md) | Risoluzione problemi comuni |
 | [💻 Piattaforme](docs/platform_specific.md) | Configurazioni per OS specifici |
-| [📚 API Reference](docs/api_reference.md) | Guida completa alle API LNN |
-| [🏗️ Architettura](docs/architecture.md) | Diagrammi e struttura del sistema |
-| [📖 Glossario](docs/glossary.md) | Termini e concetti chiave |
-| [🔧 Troubleshooting](docs/troubleshooting.md) | Risoluzione problemi comuni |
-| [💻 Piattaforme](docs/platform_specific.md) | Configurazioni per OS specifici |
-| [📚 API Reference](docs/api_reference.md) | Guida completa alle API LNN |
-| [🏗️ Architettura](docs/architecture.md) | Diagrammi e struttura del sistema |
-| [📖 Glossario](docs/glossary.md) | Termini e concetti chiave |
-| [🔧 Troubleshooting](docs/troubleshooting.md) | Risoluzione problemi comuni |
-| [💻 Piattaforme](docs/platform_specific.md) | Configurazioni per OS specifici |
-| [📚 API Reference](docs/api_reference.md) | Guida completa alle API LNN |
-| [🏗️ Architettura](docs/architecture.md) | Diagrammi e struttura del sistema |
-| [📖 Glossario](docs/glossary.md) | Termini e concetti chiave |
-| [🔧 Troubleshooting](docs/troubleshooting.md) | Risoluzione problemi comuni |
-| [💻 Piattaforme](docs/platform_specific.md) | Configurazioni per OS specifici |
-| [📚 API Reference](docs/api_reference.md) | Guida completa alle API LNN |
-| [🏗️ Architettura](docs/architecture.md) | Diagrammi e struttura del sistema |
-| [📖 Glossario](docs/glossary.md) | Termini e concetti chiave |
-| [🔧 Troubleshooting](docs/troubleshooting.md) | Risoluzione problemi comuni |
-| [💻 Piattaforme](docs/platform_specific.md) | Configurazioni per OS specifici |
-| [📚 API Reference](docs/api_reference.md) | Guida completa alle API LNN |
-| [🏗️ Architettura](docs/architecture.md) | Diagrammi e struttura del sistema |
-| [📖 Glossario](docs/glossary.md) | Termini e concetti chiave |
-| [🔧 Troubleshooting](docs/troubleshooting.md) | Risoluzione problemi comuni |
-| [💻 Piattaforme](docs/platform_specific.md) | Configurazioni per OS specifici |
-| [📚 API Reference](docs/api_reference.md) | Guida completa alle API LNN |
-| [🏗️ Architettura](docs/architecture.md) | Diagrammi e struttura del sistema |
-| [📖 Glossario](docs/glossary.md) | Termini e concetti chiave |
-| [🔧 Troubleshooting](docs/troubleshooting.md) | Risoluzione problemi comuni |
-| [💻 Piattaforme](docs/platform_specific.md) | Configurazioni per OS specifici |
-| [📚 API Reference](docs/api_reference.md) | Guida completa alle API LNN |
-| [🏗️ Architettura](docs/architecture.md) | Diagrammi e struttura del sistema |
-| [📖 Glossario](docs/glossary.md) | Termini e concetti chiave |
-| [🔧 Troubleshooting](docs/troubleshooting.md) | Risoluzione problemi comuni |
-| [💻 Piattaforme](docs/platform_specific.md) | Configurazioni per OS specifici |
-| [📚 API Reference](docs/api_reference.md) | Guida completa alle API LNN |
-| [🏗️ Architettura](docs/architecture.md) | Diagrammi e struttura del sistema |
-| [📖 Glossario](docs/glossary.md) | Termini e concetti chiave |
-| [🔧 Troubleshooting](docs/troubleshooting.md) | Risoluzione problemi comuni |
-| [💻 Piattaforme](docs/platform_specific.md) | Configurazioni per OS specifici |
-| [📚 API Reference](docs/api_reference.md) | Guida completa alle API LNN |
-| [🏗️ Architettura](docs/architecture.md) | Diagrammi e struttura del sistema |
-| [📖 Glossario](docs/glossary.md) | Termini e concetti chiave |
-| [🔧 Troubleshooting](docs/troubleshooting.md) | Risoluzione problemi comuni |
-| [💻 Piattaforme](docs/platform_specific.md) | Configurazioni per OS specifici |
-| [📚 API Reference](docs/api_reference.md) | Guida completa alle API LNN |
-| [🏗️ Architettura](docs/architecture.md) | Diagrammi e struttura del sistema |
-| [📖 Glossario](docs/glossary.md) | Termini e concetti chiave |
-| [🔧 Troubleshooting](docs/troubleshooting.md) | Risoluzione problemi comuni |
-| [💻 Piattaforme](docs/platform_specific.md) | Configurazioni per OS specifici |
-| [📚 API Reference](docs/api_reference.md) | Guida completa alle API LNN |
-| [🏗️ Architettura](docs/architecture.md) | Diagrammi e struttura del sistema |
-| [📖 Glossario](docs/glossary.md) | Termini e concetti chiave |
-| [🔧 Troubleshooting](docs/troubleshooting.md) | Risoluzione problemi comuni |
-| [💻 Piattaforme](docs/platform_specific.md) | Configurazioni per OS specifici |
+
 
 ## Quick Start
 
@@ -206,21 +150,6 @@ neuro_llm/
     └── test_hybrid.py
 ```
 
-### Organizzazione del Codice (DRY Principle)
-
-Il progetto segue le best practice **DRY (Don't Repeat Yourself)**:
-
-- **File `.py`**: Contengono le classi e funzioni riutilizzabili (fonte di verità)
-- **File `.ipynb`**: Notebook interattivi che importano dai `.py` per demo educative
-- **Su Colab**: I notebook scaricano automaticamente i `.py` da GitHub
-- **Localmente**: I `.py` sono già presenti per import diretto
-
-Questa architettura garantisce:
-✅ Zero duplicazione del codice
-✅ Facile manutenibilità (modifica solo i `.py`)
-✅ Testing semplificato (classi isolate)
-✅ Massima riusabilità
-
 Vedi [docs/colab_setup.md](docs/colab_setup.md#architettura-del-codice-dry-principle) per dettagli.
 
 ## 💡 Perché LNN?
@@ -250,6 +179,3 @@ Questo è un repository educativo. Sentiti libero di:
 
 Esempi rilasciati sotto licenza MIT. IBM LNN è sotto Apache 2.0.
 
----
-
-**Creato con** ❤️ **per dimostrare le potenzialità della Neuro-Symbolic AI**
