@@ -1,25 +1,10 @@
 """
 Sistema di Raccomandazione Film usando IBM Logical Neural Networks (LNN)
 
-Questo modulo fornisce la classe MovieRecommendationSystem che implementa un sistema
-di raccomandazione basato su regole logiche.
+Questo modulo implementa raccomandazioni basate su regole logiche LNN.
+Dimostra inferenza preferenze e similarità tra film.
 
-Caratteristiche:
-- Regole di raccomandazione basate su generi e similarità
-- Inferisce preferenze utente da comportamenti passati
-- Spiegazioni interpretabili per ogni raccomandazione
-
-Utilizzo:
-    from movie_recommender import MovieRecommendationSystem
-
-    system = MovieRecommendationSystem()
-    system.add_movie('Inception', ['SciFi', 'Thriller'])
-    system.add_viewing_history('Alice', ['Inception'])
-    recommendations = system.get_recommendations('Alice')
-
-Per demo interattiva completa, vedi il notebook movie_recommender.ipynb
-
-Autore: Gianluca Mazza
+Per demo interattiva, vedi movie_recommender.ipynb
 """
 
 from lnn import Predicate, Variable, Implies, And, Forall, Model, Fact, World
@@ -27,14 +12,13 @@ from typing import Dict, List, Set
 
 
 class MovieRecommendationSystem:
-    """Sistema di raccomandazione basato su regole logiche + learning"""
+    """Sistema raccomandazione basato su regole logiche LNN + learning."""
 
     def __init__(self):
         self.model = Model()
         self._setup_predicates()
         self._setup_rules()
 
-        # Tracking
         self.users: Set[str] = set()
         self.movies: Set[str] = set()
         self.genres: Set[str] = set()

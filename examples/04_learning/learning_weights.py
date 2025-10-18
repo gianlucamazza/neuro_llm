@@ -1,26 +1,10 @@
 """
 Learning con IBM Logical Neural Networks (LNN)
 
-Questo modulo fornisce le classi per training end-to-end di sistemi LNN,
-dimostrando come apprendere pesi logici da dati con eccezioni.
+Questo modulo dimostra training end-to-end di sistemi LNN per apprendere
+pesi logici da dati con eccezioni.
 
-Caratteristiche:
-- Apprendimento pesi logici da dati con eccezioni
-- Ottimizzazione "quanto" una regola è affidabile
-- Gestione contraddizioni e dati rumorosi
-- Training end-to-end con gradient descent
-
-Utilizzo:
-    from learning_weights import SocialNetworkLearner, generate_synthetic_data
-
-    learner = SocialNetworkLearner()
-    data = generate_synthetic_data()
-    learner.add_training_data(data)
-    losses = learner.train(epochs=100)
-
-Per demo interattiva completa, vedi il notebook learning_weights.ipynb
-
-Autore: Gianluca Mazza
+Per demo interattiva, vedi learning_weights.ipynb
 """
 
 from lnn import (

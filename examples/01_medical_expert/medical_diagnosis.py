@@ -1,31 +1,20 @@
 """
 Sistema Esperto per Diagnosi Medica usando IBM Logical Neural Networks (LNN)
 
-Questo modulo fornisce la classe MedicalDiagnosisSystem che implementa un sistema
-esperto per diagnosi medica basato su regole logiche.
+Questo modulo implementa diagnosi medica basata su regole logiche LNN.
+Dimostra inferenza bidirezionale e gestione incertezza con bounds.
 
-Caratteristiche:
-- Definisce regole logiche per inferire malattie da sintomi
-- Gestisce incertezza con bounds (lower, upper)
-- Esegue inferenza bidirezionale
-
-Utilizzo:
-    from medical_diagnosis import MedicalDiagnosisSystem
-
-    system = MedicalDiagnosisSystem()
-    system.add_patient('Mario', {'febbre': Fact.TRUE, ...})
-    results = system.diagnose()
-
-Per demo interattiva completa, vedi il notebook medical_diagnosis.ipynb
-
-Autore: Gianluca Mazza
+Per demo interattiva, vedi medical_diagnosis.ipynb
 """
 
 from lnn import Predicate, Variable, Implies, And, Or, Not, Model, Fact, World
 
 
 class MedicalDiagnosisSystem:
-    """Sistema esperto per diagnosi medica basato su regole logiche"""
+    """Sistema esperto per diagnosi medica basato su regole logiche LNN.
+
+    Dimostra inferenza bidirezionale e gestione incertezza con bounds.
+    """
 
     def __init__(self):
         self.model = Model()
@@ -34,7 +23,7 @@ class MedicalDiagnosisSystem:
         self._setup_rules()
 
     def _setup_predicates(self):
-        """Definisce i predicati (neuroni logici) per sintomi e diagnosi"""
+        """Definisce predicati per sintomi e diagnosi."""
         # Sintomi
         self.Ha_Febbre = Predicate('Ha_Febbre')
         self.Ha_Tosse = Predicate('Ha_Tosse')
@@ -50,7 +39,7 @@ class MedicalDiagnosisSystem:
         self.Bronchite = Predicate('Bronchite')
 
     def _setup_rules(self):
-        """Definisce le regole logiche per la diagnosi"""
+        """Definisce regole logiche per diagnosi."""
         x = self.patient_var
 
         # Regola 1: Febbre ∧ Dolori Muscolari → Influenza
@@ -98,19 +87,15 @@ class MedicalDiagnosisSystem:
         )
 
     def add_patient(self, name: str, symptoms: dict):
-        """
-        Aggiunge un paziente con i suoi sintomi
+        """Aggiunge paziente con sintomi.
 
         Args:
-            name: Nome del paziente
-            symptoms: Dizionario {sintomo: valore}
-                     valore può essere:
-                     - Fact.TRUE / Fact.FALSE: certezza
-                     - [lower, upper]: bounds per incertezza (es. [0.7, 0.9])
+            name: Nome paziente
+            symptoms: Dict {sintomo: valore} dove valore è Fact.TRUE/FALSE
+                     o [lower, upper] per incertezza
         """
         data = {}
 
-        # Mappa sintomi a predicati
         symptom_map = {
             'febbre': self.Ha_Febbre,
             'tosse': self.Ha_Tosse,
@@ -130,19 +115,14 @@ class MedicalDiagnosisSystem:
         self.model.add_data(data)
 
     def diagnose(self) -> dict:
-        """
-        Esegue l'inferenza e restituisce le diagnosi
+        """Esegue inferenza bidirezionale e restituisce diagnosi.
 
         Returns:
-            Dizionario {paziente: {diagnosi: bounds}}
+            Dict {paziente: {diagnosi: bounds}}
         """
-        # Inferenza bidirezionale
         self.model.infer()
-
-        # Estrai risultati
         results = {}
 
-        # Predicati diagnosi da controllare
         diagnoses = {
             'Influenza': self.Influenza,
             'Raffreddore': self.Raffreddore,
@@ -150,7 +130,6 @@ class MedicalDiagnosisSystem:
             'Bronchite': self.Bronchite,
         }
 
-        # Per ogni paziente nel modello
         all_patients = set()
         for predicate in [self.Ha_Febbre, self.Ha_Tosse, self.Ha_Mal_Di_Gola]:
             all_patients.update(predicate.state())
@@ -168,12 +147,11 @@ class MedicalDiagnosisSystem:
         return results
 
     def print_diagnosis(self, patient_name: str, diagnosis: dict):
-        """Stampa la diagnosi in formato leggibile"""
+        """Stampa diagnosi in formato leggibile."""
         print(f"\n{'='*60}")
         print(f"DIAGNOSI PER: {patient_name}")
         print(f"{'='*60}")
 
-        # Ordina per probabilità (lower bound)
         sorted_diag = sorted(
             diagnosis.items(),
             key=lambda x: x[1][0] if isinstance(x[1], tuple) else 0,
@@ -185,7 +163,6 @@ class MedicalDiagnosisSystem:
                 lower, upper = bounds
                 confidence = (lower + upper) / 2 * 100
 
-                # Classificazione
                 if lower >= 0.7:
                     status = "PROBABILE"
                     symbol = "⚠️"
@@ -197,20 +174,17 @@ class MedicalDiagnosisSystem:
                     symbol = "✓"
 
                 print(f"{symbol} {disease:15s}: {status:12s} "
-                      f"[{lower:.2f}, {upper:.2f}] ~{confidence:.1f}%")
+                       f"[{lower:.2f}, {upper:.2f}] ~{confidence:.1f}%")
 
 
-# Verifica modulo quando eseguito direttamente
 if __name__ == "__main__":
     print("=" * 60)
     print("Medical Diagnosis System - Module Check")
     print("=" * 60)
 
-    # Test creazione sistema
     system = MedicalDiagnosisSystem()
     print("\n✓ MedicalDiagnosisSystem creato correttamente")
 
-    # Quick test
     system.add_patient('Test', {'febbre': Fact.TRUE})
     results = system.diagnose()
     print("✓ Inferenza funzionante")

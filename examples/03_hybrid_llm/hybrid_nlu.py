@@ -1,28 +1,10 @@
 """
 Sistema Ibrido LNN + LLM per Natural Language Understanding
 
-Questo modulo fornisce la classe HybridNLUSystem che integra LLM (Claude) e LNN
-per comprensione del linguaggio naturale con ragionamento logico.
-
+Questo modulo integra LLM (Claude) e LNN per NLU con ragionamento logico.
 Pipeline: Testo → [LLM] → Fatti → [LNN] → Inferenze
 
-Caratteristiche:
-- LLM estrae fatti strutturati da testo naturale
-- LNN applica ragionamento logico per inferire nuova conoscenza
-- Gestione sicura API keys (best practice 2025)
-- Demo mode disponibile senza API key
-
-Utilizzo:
-    from hybrid_nlu import HybridNLUSystem
-
-    system = HybridNLUSystem(api_key="sk-ant-...")
-    facts = system.extract_facts_with_llm("Leonardo nacque a Vinci")
-    system.add_facts_to_lnn(facts)
-    inferred = system.extract_inferred_facts()
-
-Per demo interattiva completa, vedi il notebook hybrid_nlu.ipynb
-
-Autore: Gianluca Mazza
+Per demo interattiva, vedi hybrid_nlu.ipynb
 """
 
 from lnn import Predicate, Variable, Implies, And, Forall, Model, Fact, World, Direction

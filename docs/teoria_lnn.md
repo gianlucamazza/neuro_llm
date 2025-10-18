@@ -8,7 +8,8 @@
 4. [Operatori Logici](#operatori-logici)
 5. [Inferenza Bidirezionale](#inferenza-bidirezionale)
 6. [Learning](#learning)
-7. [Confronti con Altri Approcci](#confronti)
+7. [LNN come Modello Cognitivo](#lnn-come-modello-cognitivo)
+8. [Confronti con Altri Approcci](#confronti)
 
 ## Introduzione
 
@@ -344,6 +345,105 @@ for epoch in range(100):
 
 # Risultato: peso della regola si adatta alle eccezioni
 ```
+
+## LNN come Modello Cognitivo
+
+LNN non è solo un framework tecnico, ma un **modello computazionale ispirato a processi cognitivi umani**. Questa sezione esplora le analogie tra LNN e il cervello, mostrando come LNN modelli aspetti chiave della cognizione.
+
+### Analogie con il Cervello Umano
+
+| Aspetto LNN | Processo Cerebrale | Spiegazione |
+|-------------|-------------------|-------------|
+| **Neuroni Logici** | Neuroni Biologici | Entrambi trasformano input complessi in output strutturati attraverso funzioni specializzate |
+| **Inferenza Bidirezionale** | Feedforward + Feedback | Bottom-up (sensori → corteccia) + Top-down (aspettative → percezione) |
+| **Bounds [L,U]** | Incertezza Neurale | Rappresentazione probabilistica dell'informazione, simile alla confidence neurale |
+| **Grounding** | Binding Simbolico | Collegamento simboli astratti a rappresentazioni concrete (es. "cane" → immagine specifica) |
+| **Apprendimento Differenziabile** | Plasticità Sinaptica | Modifica pesi basata su errore, analogo a Hebbian learning e backpropagation corticale |
+
+### Modelli Neuroscientifici Ispiratori
+
+#### 1. Predictive Coding (Rao & Ballard, 1999)
+L'inferenza bidirezionale di LNN è analoga al **predictive coding** nel cervello:
+
+- **Forward Pass**: Predizioni bottom-up dai dati sensoriali
+- **Backward Pass**: Errori di predizione top-down per raffinare rappresentazioni
+- **Risultato**: Processamento efficiente e gerarchico, come nella corteccia visiva
+
+```python
+# LNN modella predictive coding:
+# Forward: Da evidenza → ipotesi
+Implies(Symptoms(x), Disease(x))
+
+# Backward: Da ipotesi → spiegazione
+# Se Disease=FALSE, allora Symptoms devono essere spiegati diversamente
+```
+
+#### 2. Bayesian Brain Hypothesis (Doya et al., 2007)
+I bounds di LNN rappresentano **distribuzioni di probabilità** sull'informazione:
+
+- `[0.0, 1.0]` = Massima incertezza (distribuzione uniforme)
+- `[1.0, 1.0]` = Certezza assoluta (delta function)
+- `[0.6, 0.8]` = Conoscenza parziale con confidence
+
+Questo riflette come il cervello mantiene **rappresentazioni probabilistiche** dell'ambiente.
+
+#### 3. Dual Process Theory (Kahneman, 2011)
+LNN combina due sistemi cognitivi:
+
+- **Sistema 1 (Fast)**: Inferenza neurale diretta (pattern recognition)
+- **Sistema 2 (Slow)**: Ragionamento logico strutturato (deliberative reasoning)
+
+```python
+# Sistema 1: Pattern recognition rapida
+# "Febbre + Tosse → Probabilmente Influenza"
+
+# Sistema 2: Ragionamento logico
+# "Se (Febbre ∧ Tosse) → Influenza, allora ¬Influenza → ¬(Febbre ∧ Tosse)"
+```
+
+### Implicazioni Cognitive
+
+#### Memoria e Conoscenza
+- **Regole LNN** = Conoscenza dichiarativa (fatti e regole)
+- **Bounds** = Forza della memoria (più vicini a 1 = più sicuri)
+- **Grounding** = Episodic memory (istanze specifiche)
+
+#### Apprendimento e Plasticità
+- **Training LNN** = Apprendimento supervisionato con eccezioni
+- **Aggiornamento pesi** = Plasticità sinaptica basata su sorpresa/errore
+- **Gestione contraddizioni** = Cognitive dissonance resolution
+
+#### Ragionamento e Problem Solving
+- **Inferenza bidirezionale** = Abductive reasoning (da effetti a cause)
+- **Open World Assumption** = Gestione dell'ignoranza (non sapere ≠ falso)
+- **Quantificatori** = Ragionamento su insiemi e generalizzazioni
+
+### Confronto con Altri Modelli Cognitivi
+
+| Modello | Focus | LNN Equivalent |
+|---------|-------|----------------|
+| **ACT-R** | Produzioni cognitive | Regole LNN con condizioni |
+| **SOAR** | Problem solving | Inferenza bidirezionale |
+| **Bayesian Networks** | Probabilità | Bounds semantics |
+| **Neural Networks Pure** | Pattern learning | Parte neurale di LNN |
+
+### Applicazioni Neuroscientifiche
+
+LNN può essere usato per **modellare processi cognitivi**:
+
+1. **Decision Making**: Bounds come confidence in scelte
+2. **Memory Retrieval**: Grounding come associazione simbolica
+3. **Language Understanding**: Inferenza bidirezionale per disambiguazione
+4. **Social Cognition**: Regole per inferire intenzioni e relazioni
+
+### Limitazioni come Modello Cerebrale
+
+Mentre LNN è ispirato al cervello, non è un modello neurale completo:
+- Mancanza di temporalità (spiking neurons)
+- Nessuna neuromodulazione (dopamina, etc.)
+- Limitata espressività spaziale (topologia corticale)
+
+Tuttavia, LNN fornisce un **ponte cruciale** tra neuroscienze computazionali e AI simbolica, dimostrando come logica formale possa emergere da processi neurali.
 
 ## Confronti
 

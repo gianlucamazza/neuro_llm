@@ -138,64 +138,79 @@ nano examples/03_hybrid_llm/config.py
 
 **Nota**: L'esempio 03 funziona anche **senza API key** in demo mode.
 
-## Troubleshooting
+## Configurazioni Avanzate
 
-### Problema: LNN non si installa
-
-```bash
-# Errore: "error: metadata-generation-failed"
-
-# Soluzione: Aggiorna pip e setuptools
-pip install --upgrade pip setuptools wheel
-
-# Riprova installazione
-pip install lnn
-```
-
-### Problema: PyTorch troppo grande
+### Per Sviluppo
 
 ```bash
-# Errore: "Download too large"
+# Installa dipendenze extra per sviluppo
+pip install -r requirements.txt
+pip install black flake8 mypy ipython jupyter
 
-# Soluzione: Installa versione CPU-only (più piccola)
-pip install torch --index-url https://download.pytorch.org/whl/cpu
+# Setup pre-commit hooks (opzionale)
+pip install pre-commit
+pre-commit install
 ```
 
-### Problema: Import Error su macOS
+### Per Production
 
 ```bash
-# Errore: "ImportError: cannot import name 'BinaryPredicate'"
+# Installa solo dipendenze necessarie (no test/dev)
+pip install lnn torch anthropic
 
-# Soluzione: Reinstalla LNN
-pip uninstall lnn
-pip install --no-cache-dir lnn
+# Opzionale: freeze versioni
+pip freeze > requirements-prod.txt
 ```
 
-### Problema: Test Falliscono
+### Per Jupyter Notebooks
 
 ```bash
-# Errore: "ModuleNotFoundError"
+# Installa jupyter
+pip install jupyter ipykernel
 
-# Soluzione: Verifica path e reinstalla
-pip install -e .
-pytest tests/ -v
+# Aggiungi kernel
+python -m ipykernel install --user --name=lnn_env --display-name="LNN Environment"
+
+# Avvia notebook
+jupyter notebook
 ```
 
-### Problema: CUDA non disponibile
+## Aggiornamento e Manutenzione
+
+### Aggiorna Tutte le Dipendenze
 
 ```bash
-# Warning: "CUDA not available, using CPU"
-
-# Questo è OK! LNN funziona su CPU
-# Per abilitare GPU (se hai NVIDIA):
-
-# 1. Verifica driver CUDA
-nvidia-smi
-
-# 2. Reinstalla PyTorch con CUDA
-pip uninstall torch
-pip install torch --index-url https://download.pytorch.org/whl/cu118
+pip install --upgrade -r requirements.txt
 ```
+
+### Aggiorna Solo LNN
+
+```bash
+pip install --upgrade lnn
+```
+
+### Aggiorna da GitHub (latest)
+
+```bash
+pip install --upgrade git+https://github.com/IBM/LNN.git
+```
+
+### Disinstallazione
+
+```bash
+# Disattiva environment
+deactivate
+
+# Rimuovi environment
+rm -rf venv/
+
+# Opzionale: rimuovi cache pip
+pip cache purge
+```
+
+## Risorse Aggiuntive
+
+- [Documentazione LNN Ufficiale](https://ibm.github.io/LNN/)
 
 ## Verifica Completa
 
@@ -259,140 +274,3 @@ Esegui:
 python verify_installation.py
 ```
 
-## Configurazioni Specifiche
-
-### Per Sviluppo
-
-```bash
-# Installa dipendenze extra per sviluppo
-pip install -r requirements.txt
-pip install black flake8 mypy ipython jupyter
-
-# Setup pre-commit hooks (opzionale)
-pip install pre-commit
-pre-commit install
-```
-
-### Per Production
-
-```bash
-# Installa solo dipendenze necessarie (no test/dev)
-pip install lnn torch anthropic
-
-# Opzionale: freeze versioni
-pip freeze > requirements-prod.txt
-```
-
-### Per Jupyter Notebooks
-
-```bash
-# Installa jupyter
-pip install jupyter ipykernel
-
-# Aggiungi kernel
-python -m ipykernel install --user --name=lnn_env --display-name="LNN Environment"
-
-# Avvia notebook
-jupyter notebook
-```
-
-## Aggiornamento
-
-### Aggiorna Tutte le Dipendenze
-
-```bash
-pip install --upgrade -r requirements.txt
-```
-
-### Aggiorna Solo LNN
-
-```bash
-pip install --upgrade lnn
-```
-
-### Aggiorna da GitHub (latest)
-
-```bash
-pip install --upgrade git+https://github.com/IBM/LNN.git
-```
-
-## Disinstallazione
-
-```bash
-# Disattiva environment
-deactivate
-
-# Rimuovi environment
-rm -rf venv/
-
-# Opzionale: rimuovi cache pip
-pip cache purge
-```
-
-## Piattaforme Specifiche
-
-### macOS (Apple Silicon M1/M2)
-
-```bash
-# PyTorch per ARM
-pip install torch torchvision
-
-# Verifica architettura
-python -c "import platform; print(platform.machine())"
-# Output: arm64
-
-# LNN funziona nativamente
-pip install lnn
-```
-
-### Windows con WSL2
-
-```bash
-# Consigliato: usa WSL2 invece di Windows nativo
-
-# 1. Installa WSL2
-wsl --install
-
-# 2. Dentro WSL, segui installazione Linux standard
-sudo apt update
-sudo apt install python3.10 python3-pip
-pip3 install -r requirements.txt
-```
-
-### Linux Server (no GUI)
-
-```bash
-# Matplotlib richiede backend non-interattivo
-export MPLBACKEND=Agg
-
-# Oppure configura in matplotlibrc
-echo "backend: Agg" > ~/.config/matplotlib/matplotlibrc
-
-# Installa normalmente
-pip install -r requirements.txt
-```
-
-## Supporto
-
-### Problemi con LNN
-
-- GitHub Issues: https://github.com/IBM/LNN/issues
-- Documentazione: https://ibm.github.io/LNN/
-
-### Problemi con Questo Repository
-
-- Apri issue su questo repository
-- Verifica prima di aver seguito tutti gli step
-
-## Next Steps
-
-Dopo installazione:
-
-1. ✅ Esegui tests: `pytest tests/ -v`
-2. ✅ Prova esempio semplice: `python examples/01_medical_expert/medical_diagnosis.py`
-3. ✅ Leggi [teoria_lnn.md](teoria_lnn.md) per capire come funziona
-4. ✅ Esplora esempi più complessi
-
----
-
-**Buon coding con LNN! 🚀**

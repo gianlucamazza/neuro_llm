@@ -7,20 +7,78 @@
 [![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](CONTRIBUTING.md)
 [![GitHub stars](https://img.shields.io/github/stars/YOUR_USERNAME/neuro_llm?style=social)](https://github.com/YOUR_USERNAME/neuro_llm)
 
-Repository esplicativo che dimostra l'uso di **IBM Logical Neural Networks (LNN)**, un framework rivoluzionario che fonde completamente reti neurali e logica simbolica.
+Repository educativo che dimostra **IBM Logical Neural Networks (LNN)**, un framework neuro-simbolico che fonde reti neurali e logica simbolica, ispirandosi a processi cognitivi umani.
 
 > **📝 Nota**: Prima di pubblicare su GitHub, sostituisci `YOUR_USERNAME` nei badge sopra con il tuo username GitHub.
 
-## Cosa Rende LNN Rivoluzionario
+## 📚 Documentazione
 
-LNN è un framework che crea una corrispondenza **1-a-1 tra neuroni e operazioni logiche**. A differenza delle reti neurali tradizionali che processano solo in avanti, LNN esegue **inferenza bidirezionale**, permettendo sia modus ponens che modus tollens.
-
-### Caratteristiche Chiave
-
-- **Neuroni Logici**: Ogni neurone rappresenta un'operazione logica con pesi interpretabili
-- **Open World Assumption**: Gestisce conoscenza incompleta mantenendo limiti superiori e inferiori per ogni variabile
-- **End-to-End Differenziabile**: Loss function che cattura contraddizioni logiche
-- **Ragionamento + Apprendimento**: Combina regole logiche esplicite con apprendimento dai dati
+| Sezione | Descrizione |
+|---------|-------------|
+| [🧠 Teoria LNN](docs/teoria_lnn.md) | Fondamenti matematici, architettura e analogie neuroscientifiche |
+| [⚙️ Installazione](docs/installation.md) | Setup ambiente e dipendenze |
+| [🔍 Confronti](docs/comparisons.md) | LNN vs altri approcci (Prolog, NN, ProbLog) |
+| [☁️ Google Colab](docs/colab_setup.md) | Guida completa per esecuzione su Colab |
+| [📚 API Reference](docs/api_reference.md) | Guida completa alle API LNN |
+| [🏗️ Architettura](docs/architecture.md) | Diagrammi e struttura del sistema |
+| [📖 Glossario](docs/glossary.md) | Termini e concetti chiave |
+| [🔧 Troubleshooting](docs/troubleshooting.md) | Risoluzione problemi comuni |
+| [💻 Piattaforme](docs/platform_specific.md) | Configurazioni per OS specifici |
+| [📚 API Reference](docs/api_reference.md) | Guida completa alle API LNN |
+| [🏗️ Architettura](docs/architecture.md) | Diagrammi e struttura del sistema |
+| [📖 Glossario](docs/glossary.md) | Termini e concetti chiave |
+| [🔧 Troubleshooting](docs/troubleshooting.md) | Risoluzione problemi comuni |
+| [💻 Piattaforme](docs/platform_specific.md) | Configurazioni per OS specifici |
+| [📚 API Reference](docs/api_reference.md) | Guida completa alle API LNN |
+| [🏗️ Architettura](docs/architecture.md) | Diagrammi e struttura del sistema |
+| [📖 Glossario](docs/glossary.md) | Termini e concetti chiave |
+| [🔧 Troubleshooting](docs/troubleshooting.md) | Risoluzione problemi comuni |
+| [💻 Piattaforme](docs/platform_specific.md) | Configurazioni per OS specifici |
+| [📚 API Reference](docs/api_reference.md) | Guida completa alle API LNN |
+| [🏗️ Architettura](docs/architecture.md) | Diagrammi e struttura del sistema |
+| [📖 Glossario](docs/glossary.md) | Termini e concetti chiave |
+| [🔧 Troubleshooting](docs/troubleshooting.md) | Risoluzione problemi comuni |
+| [💻 Piattaforme](docs/platform_specific.md) | Configurazioni per OS specifici |
+| [📚 API Reference](docs/api_reference.md) | Guida completa alle API LNN |
+| [🏗️ Architettura](docs/architecture.md) | Diagrammi e struttura del sistema |
+| [📖 Glossario](docs/glossary.md) | Termini e concetti chiave |
+| [🔧 Troubleshooting](docs/troubleshooting.md) | Risoluzione problemi comuni |
+| [💻 Piattaforme](docs/platform_specific.md) | Configurazioni per OS specifici |
+| [📚 API Reference](docs/api_reference.md) | Guida completa alle API LNN |
+| [🏗️ Architettura](docs/architecture.md) | Diagrammi e struttura del sistema |
+| [📖 Glossario](docs/glossary.md) | Termini e concetti chiave |
+| [🔧 Troubleshooting](docs/troubleshooting.md) | Risoluzione problemi comuni |
+| [💻 Piattaforme](docs/platform_specific.md) | Configurazioni per OS specifici |
+| [📚 API Reference](docs/api_reference.md) | Guida completa alle API LNN |
+| [🏗️ Architettura](docs/architecture.md) | Diagrammi e struttura del sistema |
+| [📖 Glossario](docs/glossary.md) | Termini e concetti chiave |
+| [🔧 Troubleshooting](docs/troubleshooting.md) | Risoluzione problemi comuni |
+| [💻 Piattaforme](docs/platform_specific.md) | Configurazioni per OS specifici |
+| [📚 API Reference](docs/api_reference.md) | Guida completa alle API LNN |
+| [🏗️ Architettura](docs/architecture.md) | Diagrammi e struttura del sistema |
+| [📖 Glossario](docs/glossary.md) | Termini e concetti chiave |
+| [🔧 Troubleshooting](docs/troubleshooting.md) | Risoluzione problemi comuni |
+| [💻 Piattaforme](docs/platform_specific.md) | Configurazioni per OS specifici |
+| [📚 API Reference](docs/api_reference.md) | Guida completa alle API LNN |
+| [🏗️ Architettura](docs/architecture.md) | Diagrammi e struttura del sistema |
+| [📖 Glossario](docs/glossary.md) | Termini e concetti chiave |
+| [🔧 Troubleshooting](docs/troubleshooting.md) | Risoluzione problemi comuni |
+| [💻 Piattaforme](docs/platform_specific.md) | Configurazioni per OS specifici |
+| [📚 API Reference](docs/api_reference.md) | Guida completa alle API LNN |
+| [🏗️ Architettura](docs/architecture.md) | Diagrammi e struttura del sistema |
+| [📖 Glossario](docs/glossary.md) | Termini e concetti chiave |
+| [🔧 Troubleshooting](docs/troubleshooting.md) | Risoluzione problemi comuni |
+| [💻 Piattaforme](docs/platform_specific.md) | Configurazioni per OS specifici |
+| [📚 API Reference](docs/api_reference.md) | Guida completa alle API LNN |
+| [🏗️ Architettura](docs/architecture.md) | Diagrammi e struttura del sistema |
+| [📖 Glossario](docs/glossary.md) | Termini e concetti chiave |
+| [🔧 Troubleshooting](docs/troubleshooting.md) | Risoluzione problemi comuni |
+| [💻 Piattaforme](docs/platform_specific.md) | Configurazioni per OS specifici |
+| [📚 API Reference](docs/api_reference.md) | Guida completa alle API LNN |
+| [🏗️ Architettura](docs/architecture.md) | Diagrammi e struttura del sistema |
+| [📖 Glossario](docs/glossary.md) | Termini e concetti chiave |
+| [🔧 Troubleshooting](docs/troubleshooting.md) | Risoluzione problemi comuni |
+| [💻 Piattaforme](docs/platform_specific.md) | Configurazioni per OS specifici |
 
 ## Quick Start
 
@@ -165,163 +223,14 @@ Questa architettura garantisce:
 
 Vedi [docs/colab_setup.md](docs/colab_setup.md#architettura-del-codice-dry-principle) per dettagli.
 
-## Vantaggi di LNN
+## 💡 Perché LNN?
 
-| Caratteristica | LNN | Prolog + LLM | Solo LLM |
-|----------------|-----|--------------|----------|
-| **Interpretabilità** | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐ |
-| **Apprendimento** | ⭐⭐⭐⭐⭐ | ⭐ | ⭐⭐⭐⭐⭐ |
-| **Incertezza** | ⭐⭐⭐⭐⭐ | ⭐⭐ | ⭐⭐⭐ |
-| **Ragionamento** | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐ |
-| **Facilità d'uso** | ⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ |
+LNN eccelle in domini che richiedono **ragionamento rigoroso + apprendimento da dati**:
+- **Healthcare**: Diagnosi con regole mediche + apprendimento da casi clinici
+- **Finance**: Fraud detection con compliance rules + pattern learning
+- **Autonomous Systems**: Safety constraints + ottimizzazione da esperienza
 
-## Real World Applications
-
-LNN è ideale per domini che richiedono sia **ragionamento rigoroso** che **apprendimento da dati**. Ecco applicazioni concrete dove LNN eccelle:
-
-### 🏥 Healthcare & Medical AI
-
-**Diagnosi Assistita da AI**
-- Sistema che combina linee guida mediche (regole) con dati clinici (learning)
-- Gestisce incertezza nei sintomi e nelle diagnosi differenziali
-- Spiegabilità completa per decisioni cliniche critiche
-- **Use case**: Sistema di triage ER che prioritizza pazienti basandosi su sintomi + storia clinica
-
-**Drug Discovery**
-- Ragionamento su interazioni farmacologiche note (regole chimiche)
-- Apprendimento da trial clinici per predire efficacia
-- Identificazione di contraddizioni in letteratura medica
-
-### ⚖️ Legal & Compliance
-
-**Automated Contract Review**
-- Regole legali codificate in logica formale
-- Apprendimento da precedenti per interpretare clausole ambigue
-- Identificazione automatica di clausole contrattuali problematiche
-- **Use case**: Review automatica di contratti M&A per clausole non conformi
-
-**Regulatory Compliance**
-- Verifica automatica conformità a regolamenti (GDPR, SOX, etc)
-- Ragionamento su catene di responsabilità
-- Audit trail completo per spiegare decisioni di compliance
-
-### 💰 Finance & Risk Management
-
-**Fraud Detection**
-- Regole di rilevamento frodi note (pattern espliciti)
-- Apprendimento di nuovi pattern da transazioni storiche
-- Spiegazione chiara del perché una transazione è flagged
-- **Use case**: Sistema bancario che combina regole AML con ML per rilevare frodi emergenti
-
-**Credit Scoring**
-- Regole di credit assessment standard
-- Apprendimento da default storici
-- Trasparenza richiesta da Fair Lending laws
-- Gestione di dati incompleti (nuovi clienti)
-
-### 🤖 Autonomous Systems
-
-**Robot Planning**
-- Regole di sicurezza hard-coded (non violabili)
-- Apprendimento di strategie ottimali da esperienza
-- Ragionamento su conseguenze di azioni in ambienti incerti
-- **Use case**: Robot industriale che deve rispettare safety constraints mentre ottimizza efficienza
-
-**Autonomous Driving**
-- Highway code come regole logiche
-- Apprendimento da driving data per situazioni edge-case
-- Reasoning su intenzioni di altri agenti (pedestrian, veicoli)
-
-### 🔬 Scientific Research
-
-**Hypothesis Generation**
-- Ragionamento su letteratura scientifica esistente
-- Identificazione di gap nella conoscenza
-- Generazione di ipotesi testabili basate su pattern nei dati
-- **Use case**: Sistema che analizza paper biologici e suggerisce esperimenti
-
-**Experimental Design**
-- Regole del metodo scientifico
-- Ottimizzazione di design sperimentale basandosi su risultati precedenti
-- Spiegazione del rationale dietro design choices
-
-### 🏢 Enterprise Knowledge Management
-
-**Question Answering su Documenti Aziendali**
-- Regole di business logic codificate
-- Estrazione e ragionamento su politiche aziendali
-- Integrazione LLM (comprensione NL) + LNN (reasoning rigoroso)
-- **Use case**: Chatbot HR che risponde a domande su benefits policy con riferimenti esatti
-
-**Business Process Automation**
-- Workflow aziendali come regole logiche
-- Apprendimento di ottimizzazioni da esecuzioni storiche
-- Verifica formale di correttezza dei processi
-
-### 🎓 Education
-
-**Intelligent Tutoring Systems**
-- Prerequisiti di apprendimento come regole
-- Personalizzazione basata su performance studente
-- Spiegazioni passo-passo di concetti
-- **Use case**: Tutor di matematica che adatta difficoltà e spiega ogni step logico
-
-**Assessment & Grading**
-- Rubrics di valutazione come regole esplicite
-- Apprendimento di criteri sfumati da esempi di grading
-- Feedback consistente e spiegabile
-
-## Perché LNN per Questi Domini?
-
-| Requisito | Perché LNN |
-|-----------|-----------|
-| **Regolamentazione** | Regole esplicite verificabili da auditor |
-| **Safety-Critical** | Constraints hard che non possono essere violati |
-| **Accountability** | Spiegazione completa di ogni decisione |
-| **Data Scarcity** | Sample-efficient, funziona con pochi dati |
-| **Evolving Rules** | Facile aggiornare regole senza retraining |
-| **Hybrid** | Combina domain expertise + data-driven learning |
-
-## Case Study: Fraud Detection Bancaria
-
-```python
-# Esempio realistico semplificato
-from lnn import *
-
-# Regole esplicite (non apprendibili)
-rules = [
-    # R1: Transazioni > €10k richiedono verifica
-    Implies(Amount(t) > 10000, RequiresVerification(t)),
-
-    # R2: Transazioni da paese blacklisted → suspicious
-    Implies(FromBlacklistedCountry(t), Suspicious(t)),
-
-    # R3: Pattern insolito → potential fraud
-    Implies(
-        And(UnusualTime(t), UnusualLocation(t), UnusualAmount(t)),
-        PotentialFraud(t)
-    )
-]
-
-# Learning: Apprende pattern da dati storici
-# Quali combinazioni di features predicono fraud reale?
-model.train(historical_transactions, fraud_labels)
-
-# Risultato: Sistema che combina:
-# - Compliance rules (esplicite)
-# - Learned patterns (da dati)
-# - Spiegabilità (traccia reasoning)
-```
-
-**Benefici:**
-- ✅ Regole compliance sempre rispettate
-- ✅ Adattamento a nuovi pattern di frode
-- ✅ Spiegazione chiara per ogni alert (per investigatori)
-- ✅ Audit trail completo (requisito regolatorio)
-
----
-
-Per implementazioni complete di questi use case, vedi la [roadmap future examples](https://github.com/YOUR_USERNAME/neuro_llm/issues).
+Vedi [confronti dettagliati](docs/comparisons.md) con altri approcci.
 
 ## Risorse Utili
 
