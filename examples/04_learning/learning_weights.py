@@ -219,10 +219,17 @@ def generate_synthetic_data() -> Dict:
     - Casi "normali" dove regole sono rispettate
     - Eccezioni dove regole sono violate
     """
+    # Crea Predicate objects UNA VOLTA SOLA
+    # Ogni Predicate('Amico', arity=2) crea un NUOVO oggetto con ID diverso
+    # Dobbiamo riusare gli STESSI oggetti come chiavi del dizionario
+    Amico = Predicate('Amico', arity=2)
+    Simile = Predicate('Simile', arity=2)
+    Interagisce = Predicate('Interagisce', arity=2)
+
     data = {
-        Predicate('Amico', arity=2): {},
-        Predicate('Simile', arity=2): {},
-        Predicate('Interagisce', arity=2): {},
+        Amico: {},
+        Simile: {},
+        Interagisce: {},
     }
 
     # Cluster 1: Tech enthusiasts
@@ -230,48 +237,48 @@ def generate_synthetic_data() -> Dict:
     tech_people = ['Alice', 'Bob', 'Charlie']
     for i, p1 in enumerate(tech_people):
         for p2 in tech_people[i+1:]:
-            data[Predicate('Amico', arity=2)][(p1, p2)] = Fact.TRUE
-            data[Predicate('Amico', arity=2)][(p2, p1)] = Fact.TRUE
-            data[Predicate('Simile', arity=2)][(p1, p2)] = Fact.TRUE
-            data[Predicate('Simile', arity=2)][(p2, p1)] = Fact.TRUE
-            data[Predicate('Interagisce', arity=2)][(p1, p2)] = Fact.TRUE
-            data[Predicate('Interagisce', arity=2)][(p2, p1)] = Fact.TRUE
+            data[Amico][(p1, p2)] = Fact.TRUE
+            data[Amico][(p2, p1)] = Fact.TRUE
+            data[Simile][(p1, p2)] = Fact.TRUE
+            data[Simile][(p2, p1)] = Fact.TRUE
+            data[Interagisce][(p1, p2)] = Fact.TRUE
+            data[Interagisce][(p2, p1)] = Fact.TRUE
 
     # Cluster 2: Artists
     artists = ['Diana', 'Eve']
-    data[Predicate('Amico', arity=2)][('Diana', 'Eve')] = Fact.TRUE
-    data[Predicate('Amico', arity=2)][('Eve', 'Diana')] = Fact.TRUE
-    data[Predicate('Simile', arity=2)][('Diana', 'Eve')] = Fact.TRUE
-    data[Predicate('Simile', arity=2)][('Eve', 'Diana')] = Fact.TRUE
-    data[Predicate('Interagisce', arity=2)][('Diana', 'Eve')] = Fact.TRUE
-    data[Predicate('Interagisce', arity=2)][('Eve', 'Diana')] = Fact.TRUE
+    data[Amico][('Diana', 'Eve')] = Fact.TRUE
+    data[Amico][('Eve', 'Diana')] = Fact.TRUE
+    data[Simile][('Diana', 'Eve')] = Fact.TRUE
+    data[Simile][('Eve', 'Diana')] = Fact.TRUE
+    data[Interagisce][('Diana', 'Eve')] = Fact.TRUE
+    data[Interagisce][('Eve', 'Diana')] = Fact.TRUE
 
     # ECCEZIONE 1: Frank e George sono amici ma NON simili
     # "Gli opposti si attraggono"
-    data[Predicate('Amico', arity=2)][('Frank', 'George')] = Fact.TRUE
-    data[Predicate('Amico', arity=2)][('George', 'Frank')] = Fact.TRUE
-    data[Predicate('Simile', arity=2)][('Frank', 'George')] = (0.1, 0.3)  # Poco simili
-    data[Predicate('Simile', arity=2)][('George', 'Frank')] = (0.1, 0.3)
-    data[Predicate('Interagisce', arity=2)][('Frank', 'George')] = Fact.TRUE
-    data[Predicate('Interagisce', arity=2)][('George', 'Frank')] = Fact.TRUE
+    data[Amico][('Frank', 'George')] = Fact.TRUE
+    data[Amico][('George', 'Frank')] = Fact.TRUE
+    data[Simile][('Frank', 'George')] = (0.1, 0.3)  # Poco simili
+    data[Simile][('George', 'Frank')] = (0.1, 0.3)
+    data[Interagisce][('Frank', 'George')] = Fact.TRUE
+    data[Interagisce][('George', 'Frank')] = Fact.TRUE
 
     # ECCEZIONE 2: Helen e Igor sono simili ma NON amici
     # (Simili ma non si conoscono)
-    data[Predicate('Simile', arity=2)][('Helen', 'Igor')] = Fact.TRUE
-    data[Predicate('Simile', arity=2)][('Igor', 'Helen')] = Fact.TRUE
-    data[Predicate('Interagisce', arity=2)][('Helen', 'Igor')] = Fact.FALSE
-    data[Predicate('Interagisce', arity=2)][('Igor', 'Helen')] = Fact.FALSE
-    data[Predicate('Amico', arity=2)][('Helen', 'Igor')] = Fact.FALSE
-    data[Predicate('Amico', arity=2)][('Igor', 'Helen')] = Fact.FALSE
+    data[Simile][('Helen', 'Igor')] = Fact.TRUE
+    data[Simile][('Igor', 'Helen')] = Fact.TRUE
+    data[Interagisce][('Helen', 'Igor')] = Fact.FALSE
+    data[Interagisce][('Igor', 'Helen')] = Fact.FALSE
+    data[Amico][('Helen', 'Igor')] = Fact.FALSE
+    data[Amico][('Igor', 'Helen')] = Fact.FALSE
 
     # ECCEZIONE 3: Transitività non sempre vera
     # Jack → Kevin → Lisa, ma Jack NON è amico di Lisa
-    data[Predicate('Amico', arity=2)][('Jack', 'Kevin')] = Fact.TRUE
-    data[Predicate('Amico', arity=2)][('Kevin', 'Lisa')] = Fact.TRUE
-    data[Predicate('Amico', arity=2)][('Jack', 'Lisa')] = (0.2, 0.4)  # Conoscenti, non amici
-    data[Predicate('Interagisce', arity=2)][('Jack', 'Kevin')] = Fact.TRUE
-    data[Predicate('Interagisce', arity=2)][('Kevin', 'Lisa')] = Fact.TRUE
-    data[Predicate('Interagisce', arity=2)][('Jack', 'Lisa')] = Fact.TRUE
+    data[Amico][('Jack', 'Kevin')] = Fact.TRUE
+    data[Amico][('Kevin', 'Lisa')] = Fact.TRUE
+    data[Amico][('Jack', 'Lisa')] = (0.2, 0.4)  # Conoscenti, non amici
+    data[Interagisce][('Jack', 'Kevin')] = Fact.TRUE
+    data[Interagisce][('Kevin', 'Lisa')] = Fact.TRUE
+    data[Interagisce][('Jack', 'Lisa')] = Fact.TRUE
 
     return data
 
