@@ -117,7 +117,7 @@ class MovieRecommendationSystem:
         if strength == 1.0:
             value = Fact.TRUE
         else:
-            value = [strength, strength]
+            value = (strength, strength)
 
         self.model.add_data({
             self.Preferisce_Genere: {
@@ -153,7 +153,7 @@ class MovieRecommendationSystem:
         if score == 1.0:
             value = Fact.TRUE
         else:
-            value = [score, score]
+            value = (score, score)
 
         self.model.add_data({
             self.Simile_A: {

@@ -250,8 +250,8 @@ def generate_synthetic_data() -> Dict:
     # "Gli opposti si attraggono"
     data[Predicate('Amico', arity=2)][('Frank', 'George')] = Fact.TRUE
     data[Predicate('Amico', arity=2)][('George', 'Frank')] = Fact.TRUE
-    data[Predicate('Simile', arity=2)][('Frank', 'George')] = [0.1, 0.3]  # Poco simili
-    data[Predicate('Simile', arity=2)][('George', 'Frank')] = [0.1, 0.3]
+    data[Predicate('Simile', arity=2)][('Frank', 'George')] = (0.1, 0.3)  # Poco simili
+    data[Predicate('Simile', arity=2)][('George', 'Frank')] = (0.1, 0.3)
     data[Predicate('Interagisce', arity=2)][('Frank', 'George')] = Fact.TRUE
     data[Predicate('Interagisce', arity=2)][('George', 'Frank')] = Fact.TRUE
 
@@ -268,7 +268,7 @@ def generate_synthetic_data() -> Dict:
     # Jack → Kevin → Lisa, ma Jack NON è amico di Lisa
     data[Predicate('Amico', arity=2)][('Jack', 'Kevin')] = Fact.TRUE
     data[Predicate('Amico', arity=2)][('Kevin', 'Lisa')] = Fact.TRUE
-    data[Predicate('Amico', arity=2)][('Jack', 'Lisa')] = [0.2, 0.4]  # Conoscenti, non amici
+    data[Predicate('Amico', arity=2)][('Jack', 'Lisa')] = (0.2, 0.4)  # Conoscenti, non amici
     data[Predicate('Interagisce', arity=2)][('Jack', 'Kevin')] = Fact.TRUE
     data[Predicate('Interagisce', arity=2)][('Kevin', 'Lisa')] = Fact.TRUE
     data[Predicate('Interagisce', arity=2)][('Jack', 'Lisa')] = Fact.TRUE
