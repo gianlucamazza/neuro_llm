@@ -80,6 +80,18 @@ class HybridNLUSystem:
         self.LocatedIn = Predicate('LocatedIn', arity=2)
         self.CitizenOf = Predicate('CitizenOf', arity=2)
 
+        # Registra esplicitamente tutti i predicati nel modello
+        # Questo li rende "stored formulas" prima di aggiungere dati
+        # Senza questa registrazione, add_data() solleva "is not a stored formula"
+        self.lnn_model.add_knowledge(self.IsPerson)
+        self.lnn_model.add_knowledge(self.IsLocation)
+        self.lnn_model.add_knowledge(self.IsOrganization)
+        self.lnn_model.add_knowledge(self.BornIn)
+        self.lnn_model.add_knowledge(self.LivesIn)
+        self.lnn_model.add_knowledge(self.WorksFor)
+        self.lnn_model.add_knowledge(self.LocatedIn)
+        self.lnn_model.add_knowledge(self.CitizenOf)
+
         # Regole logiche per inferenza
 
         # Regola 1: Se nato in un luogo → cittadino di quel paese
