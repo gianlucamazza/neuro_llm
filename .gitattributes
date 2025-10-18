@@ -1,0 +1,30 @@
+# Git attributes for better handling of notebooks and Python files
+
+# Jupyter notebooks
+*.ipynb linguist-documentation=false
+*.ipynb linguist-detectable=true
+*.ipynb linguist-language=Jupyter-Notebook
+
+# Python files
+*.py linguist-language=Python
+*.py text eol=lf
+
+# Markdown
+*.md text eol=lf
+
+# YAML
+*.yml text eol=lf
+*.yaml text eol=lf
+
+# Ensure shell scripts use LF
+*.sh text eol=lf
+
+# Images
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.svg binary
+
+# PDF
+*.pdf binary
