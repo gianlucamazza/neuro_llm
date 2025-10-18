@@ -25,7 +25,7 @@ Per demo interattiva completa, vedi il notebook hybrid_nlu.ipynb
 Autore: Gianluca Mazza
 """
 
-from lnn import Predicate, Variable, Implies, And, Forall, Model, Fact, World
+from lnn import Predicate, Variable, Implies, And, Forall, Model, Fact, World, Direction
 from typing import Dict, List, Optional
 import json
 import os
@@ -269,7 +269,7 @@ Rispondi SOLO con il JSON, senza altre parole."""
 
     def infer(self):
         """Esegue inferenza LNN per dedurre nuovi fatti"""
-        self.lnn_model.infer()
+        self.lnn_model.infer(direction=Direction.UPWARD)
 
     def extract_inferred_facts(self) -> List[dict]:
         """
