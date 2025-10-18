@@ -172,13 +172,17 @@ class MovieRecommendationSystem:
             genre_counts = {}
 
             # Conta quanti film per genere ha guardato
+            guarda_state = self.Guarda.state()
+            ha_genere_state = self.Ha_Genere.state()
+            preferisce_state = self.Preferisce_Genere.state()
+
             for movie in self.movies:
-                watched = self.model[self.Guarda].get((user, movie))
+                watched = guarda_state.get((user, movie))
                 if watched and watched[0] > 0.5:  # Ha guardato il film
 
                     # Controlla i generi del film
                     for genre in self.genres:
-                        has_genre = self.model[self.Ha_Genere].get((movie, genre))
+                        has_genre = ha_genere_state.get((movie, genre))
                         if has_genre and has_genre[0] > 0.5:
                             genre_counts[genre] = genre_counts.get(genre, 0) + 1
 
@@ -189,7 +193,7 @@ class MovieRecommendationSystem:
                     strength = min(count / 3.0, 1.0)  # Max a 3 film
 
                     # Aggiungi solo se non già esplicita
-                    existing = self.model[self.Preferisce_Genere].get((user, genre))
+                    existing = preferisce_state.get((user, genre))
                     if existing is None:
                         self.add_user_preference(user, genre, strength)
 
@@ -212,15 +216,17 @@ class MovieRecommendationSystem:
 
         # Estrai raccomandazioni
         recommendations = []
+        guarda_state = self.Guarda.state()
+        consiglia_state = self.Consiglia.state()
 
         for movie in self.movies:
             # Verifica se già guardato
-            watched = self.model[self.Guarda].get((user, movie))
+            watched = guarda_state.get((user, movie))
             if watched and watched[0] > 0.5:
                 continue  # Skip film già visti
 
             # Ottieni score raccomandazione
-            rec_bounds = self.model[self.Consiglia].get((movie, user))
+            rec_bounds = consiglia_state.get((movie, user))
             if rec_bounds:
                 # Usa media dei bounds come score
                 score = (rec_bounds[0] + rec_bounds[1]) / 2
@@ -244,25 +250,29 @@ class MovieRecommendationSystem:
             Stringa di spiegazione
         """
         explanations = []
+        ha_genere_state = self.Ha_Genere.state()
+        preferisce_state = self.Preferisce_Genere.state()
+        guarda_state = self.Guarda.state()
+        simile_state = self.Simile_A.state()
 
         # Check generi del film
         movie_genres = []
         for genre in self.genres:
-            has_genre = self.model[self.Ha_Genere].get((movie, genre))
+            has_genre = ha_genere_state.get((movie, genre))
             if has_genre and has_genre[0] > 0.5:
                 movie_genres.append(genre)
 
         # Check preferenze utente
         for genre in movie_genres:
-            pref = self.model[self.Preferisce_Genere].get((user, genre))
+            pref = preferisce_state.get((user, genre))
             if pref and pref[0] > 0.5:
                 explanations.append(f"Ti piace il genere {genre}")
 
         # Check film simili guardati
         for watched_movie in self.movies:
-            watched = self.model[self.Guarda].get((user, watched_movie))
+            watched = guarda_state.get((user, watched_movie))
             if watched and watched[0] > 0.5:
-                similarity = self.model[self.Simile_A].get((watched_movie, movie))
+                similarity = simile_state.get((watched_movie, movie))
                 if similarity and similarity[0] > 0.5:
                     explanations.append(f"Simile a '{watched_movie}' che hai guardato")
 

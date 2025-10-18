@@ -268,10 +268,14 @@ Rispondi SOLO con il JSON, senza altre parole."""
         """
         facts = []
 
+        # Ottieni stati predicati
+        citizen_state = self.CitizenOf.state()
+        located_state = self.LocatedIn.state()
+
         # Estrai cittadinanze inferite
         for person_key in self.lnn_model[self.IsPerson].state():
             for loc_key in self.lnn_model[self.IsLocation].state():
-                citizen_bounds = self.lnn_model[self.CitizenOf].get((person_key, loc_key))
+                citizen_bounds = citizen_state.get((person_key, loc_key))
 
                 if citizen_bounds and citizen_bounds[0] > 0.5:  # Lower bound > 0.5
                     facts.append({
@@ -287,7 +291,7 @@ Rispondi SOLO con il JSON, senza altre parole."""
         for loc1 in locations:
             for loc2 in locations:
                 if loc1 != loc2:
-                    located_bounds = self.lnn_model[self.LocatedIn].get((loc1, loc2))
+                    located_bounds = located_state.get((loc1, loc2))
                     if located_bounds and located_bounds[0] > 0.5:
                         facts.append({
                             'type': 'location',

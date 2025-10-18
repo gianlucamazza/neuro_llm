@@ -202,7 +202,8 @@ class SocialNetworkLearner:
             Bounds [lower, upper]
         """
         predicate = getattr(self, predicate_name)
-        bounds = self.model[predicate].get((person1, person2))
+        state = predicate.state()
+        bounds = state.get((person1, person2))
 
         if bounds:
             return bounds
