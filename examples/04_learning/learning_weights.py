@@ -124,51 +124,45 @@ class SocialNetworkLearner:
         """
         Training per apprendere pesi ottimali
 
+        NOTA: Il training end-to-end con gradient descent su LNN richiede
+        una versione specifica dell'API IBM LNN che supporta il calcolo
+        della loss function. La versione attuale di questo progetto usa
+        LNN principalmente per inferenza logica deterministica.
+
+        Per simulazione educativa, questo metodo esegue solo inferenza
+        senza training dei pesi.
+
         Args:
-            epochs: Numero di epoche
-            learning_rate: Learning rate
+            epochs: Numero di epoche (non usato nella simulazione)
+            learning_rate: Learning rate (non usato nella simulazione)
 
         Returns:
-            Lista di loss values per epoca
+            Lista vuota (placeholder per compatibilità)
         """
         print(f"\n{'='*60}")
-        print("TRAINING LNN")
+        print("SOCIAL NETWORK LEARNING SYSTEM - INFERENCE MODE")
         print(f"{'='*60}")
-        print(f"Epochs: {epochs}")
-        print(f"Learning Rate: {learning_rate}")
-        print(f"Loss Function: LOGICAL_CONTRADICTION")
+        print()
+        print("⚠️  NOTA: Il training end-to-end con gradient descent richiede")
+        print("   una versione specifica dell'API LNN non disponibile.")
+        print()
+        print("✓ Eseguendo inferenza logica sui dati caricati...")
         print()
 
-        # LNN training con loss function che penalizza contraddizioni logiche
-        losses = []
+        # Esegui inferenza LNN sui dati
+        self.model.infer(direction=Direction.UPWARD)
 
-        optimizer = torch.optim.Adam(self.model.parameters(), lr=learning_rate)
+        print("✓ Inferenza completata!")
+        print()
+        print("Il sistema ha applicato le regole logiche ai dati:")
+        print("  1. Amici → Simili (con eccezioni)")
+        print("  2. Simili + Interagiscono → Amici")
+        print("  3. Transitività amicizia (debole)")
+        print()
+        print("Per predizioni, usa il metodo predict(person1, person2, predicate)")
+        print(f"{'='*60}")
 
-        for epoch in range(epochs):
-            optimizer.zero_grad()
-
-            # Forward pass: inferenza
-            self.model.infer(direction=Direction.UPWARD)
-
-            # Calcola loss (contraddizioni logiche)
-            loss = self.model.loss(Loss.LOGICAL_CONTRADICTION)
-
-            # Backward pass
-            loss.backward()
-            optimizer.step()
-
-            losses.append(loss.item())
-
-            # Progress
-            if (epoch + 1) % 10 == 0:
-                print(f"Epoch {epoch+1:3d}/{epochs} | Loss: {loss.item():.6f}")
-
-        print(f"\nTraining completato!")
-        print(f"Loss iniziale: {losses[0]:.6f}")
-        print(f"Loss finale:   {losses[-1]:.6f}")
-        print(f"Riduzione:     {(1 - losses[-1]/losses[0])*100:.1f}%")
-
-        return losses
+        return []  # Lista vuota per compatibilità
 
     def evaluate_rule_strength(self) -> Dict[str, float]:
         """
@@ -285,6 +279,11 @@ def generate_synthetic_data() -> Dict:
 
 def plot_learning_curve(losses: List[float], output_path: str = "learning_curve.png"):
     """Plotta curva di apprendimento"""
+    if not losses:
+        print("\n⚠️  Nessun dato di loss disponibile per il grafico.")
+        print("   Il training end-to-end non è attualmente implementato.")
+        return
+
     plt.figure(figsize=(10, 6))
     plt.plot(losses, linewidth=2)
     plt.xlabel('Epoch', fontsize=12)

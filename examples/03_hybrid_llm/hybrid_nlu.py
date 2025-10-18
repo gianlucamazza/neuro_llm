@@ -161,22 +161,44 @@ Restituisci SOLO un JSON valido con questa struttura:
         "organizations": ["lista di organizzazioni"]
     }},
     "facts": [
-        {{"predicate": "NomePredicato", "args": ["arg1", "arg2"]}},
+        {{"predicate": "NomePredicato", "args": ["arg1"]}},  // predicati unari
+        {{"predicate": "NomePredicato", "args": ["arg1", "arg2"]}},  // predicati binari
         ...
     ]
 }}
 
-Predicati disponibili:
-- IsPerson, IsLocation, IsOrganization (1 argomento)
-- BornIn, LivesIn, WorksFor, LocatedIn, CitizenOf (2 argomenti)
+IMPORTANTE: Estrai TUTTI i fatti, sia unari (tipo entità) che binari (relazioni):
 
-Esempio:
-Input: "Leonardo da Vinci nacque a Vinci, in Toscana."
+Predicati UNARI (1 argomento) - tipo entità:
+- IsPerson: identifica una persona
+- IsLocation: identifica un luogo
+- IsOrganization: identifica un'organizzazione
+
+Predicati BINARI (2 argomenti) - relazioni tra entità:
+- BornIn: persona nata in un luogo
+- LivesIn: persona vive in un luogo
+- WorksFor: persona lavora per organizzazione
+- LocatedIn: luogo si trova in altro luogo (es: città in regione)
+- CitizenOf: persona cittadino di un paese/luogo
+
+Esempio completo:
+Input: "Leonardo da Vinci nacque a Vinci, in Toscana, Italia. Visse a Firenze."
 Output: {{
-    "entities": {{"people": ["Leonardo da Vinci"], "locations": ["Vinci", "Toscana"]}},
+    "entities": {{
+        "people": ["Leonardo da Vinci"],
+        "locations": ["Vinci", "Toscana", "Italia", "Firenze"],
+        "organizations": []
+    }},
     "facts": [
+        {{"predicate": "IsPerson", "args": ["Leonardo da Vinci"]}},
+        {{"predicate": "IsLocation", "args": ["Vinci"]}},
+        {{"predicate": "IsLocation", "args": ["Toscana"]}},
+        {{"predicate": "IsLocation", "args": ["Italia"]}},
+        {{"predicate": "IsLocation", "args": ["Firenze"]}},
         {{"predicate": "BornIn", "args": ["Leonardo da Vinci", "Vinci"]}},
-        {{"predicate": "LocatedIn", "args": ["Vinci", "Toscana"]}}
+        {{"predicate": "LocatedIn", "args": ["Vinci", "Toscana"]}},
+        {{"predicate": "LocatedIn", "args": ["Toscana", "Italia"]}},
+        {{"predicate": "LivesIn", "args": ["Leonardo da Vinci", "Firenze"]}}
     ]
 }}
 

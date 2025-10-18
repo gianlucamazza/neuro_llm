@@ -178,13 +178,26 @@ class MovieRecommendationSystem:
 
             for movie in self.movies:
                 watched = guarda_state.get((user, movie))
-                if watched and watched[0] > 0.5:  # Ha guardato il film
+                # Gestisce sia Fact che tuple bounds
+                if watched:
+                    if isinstance(watched, tuple):
+                        watched_val = watched[0]  # Lower bound
+                    else:
+                        # Fact.TRUE o World.TRUE
+                        watched_val = 1.0
 
-                    # Controlla i generi del film
-                    for genre in self.genres:
-                        has_genre = ha_genere_state.get((movie, genre))
-                        if has_genre and has_genre[0] > 0.5:
-                            genre_counts[genre] = genre_counts.get(genre, 0) + 1
+                    if watched_val > 0.5:  # Ha guardato il film
+                        # Controlla i generi del film
+                        for genre in self.genres:
+                            has_genre = ha_genere_state.get((movie, genre))
+                            if has_genre:
+                                if isinstance(has_genre, tuple):
+                                    genre_val = has_genre[0]
+                                else:
+                                    genre_val = 1.0
+
+                                if genre_val > 0.5:
+                                    genre_counts[genre] = genre_counts.get(genre, 0) + 1
 
             # Inferisci preferenza se ha guardato >= 2 film del genere
             for genre, count in genre_counts.items():
@@ -222,14 +235,24 @@ class MovieRecommendationSystem:
         for movie in self.movies:
             # Verifica se già guardato
             watched = guarda_state.get((user, movie))
-            if watched and watched[0] > 0.5:
-                continue  # Skip film già visti
+            if watched:
+                if isinstance(watched, tuple):
+                    watched_val = watched[0]
+                else:
+                    watched_val = 1.0
+
+                if watched_val > 0.5:
+                    continue  # Skip film già visti
 
             # Ottieni score raccomandazione
             rec_bounds = consiglia_state.get((movie, user))
             if rec_bounds:
                 # Usa media dei bounds come score
-                score = (rec_bounds[0] + rec_bounds[1]) / 2
+                if isinstance(rec_bounds, tuple):
+                    score = (rec_bounds[0] + rec_bounds[1]) / 2
+                else:
+                    score = 1.0
+
                 if score > 0.3:  # Soglia minima
                     recommendations.append((movie, score))
 
@@ -259,22 +282,30 @@ class MovieRecommendationSystem:
         movie_genres = []
         for genre in self.genres:
             has_genre = ha_genere_state.get((movie, genre))
-            if has_genre and has_genre[0] > 0.5:
-                movie_genres.append(genre)
+            if has_genre:
+                genre_val = has_genre[0] if isinstance(has_genre, tuple) else 1.0
+                if genre_val > 0.5:
+                    movie_genres.append(genre)
 
         # Check preferenze utente
         for genre in movie_genres:
             pref = preferisce_state.get((user, genre))
-            if pref and pref[0] > 0.5:
-                explanations.append(f"Ti piace il genere {genre}")
+            if pref:
+                pref_val = pref[0] if isinstance(pref, tuple) else 1.0
+                if pref_val > 0.5:
+                    explanations.append(f"Ti piace il genere {genre}")
 
         # Check film simili guardati
         for watched_movie in self.movies:
             watched = guarda_state.get((user, watched_movie))
-            if watched and watched[0] > 0.5:
-                similarity = simile_state.get((watched_movie, movie))
-                if similarity and similarity[0] > 0.5:
-                    explanations.append(f"Simile a '{watched_movie}' che hai guardato")
+            if watched:
+                watched_val = watched[0] if isinstance(watched, tuple) else 1.0
+                if watched_val > 0.5:
+                    similarity = simile_state.get((watched_movie, movie))
+                    if similarity:
+                        sim_val = similarity[0] if isinstance(similarity, tuple) else 1.0
+                        if sim_val > 0.5:
+                            explanations.append(f"Simile a '{watched_movie}' che hai guardato")
 
         if not explanations:
             return "Raccomandato in base al tuo profilo"
